@@ -25,19 +25,16 @@ export class DataService {
     return error;
   }
 
-  public getHumidityInPercent(): Observable<number> {
-    return this.getDataFromXDK('HumiditySensor_0');
-  }
-
-  public getTemperatureInCel(): Observable<number> {
-    return this.getDataFromXDK('TemperatureSensor_0');
-  }
-
-  public getDataFromXDK(sensor: string): Observable<number> {
-    return this.http.get(this.rootUrl + this.thingID + '/features/' + sensor, this.getBasicHeader())
+  public getDataFromXDK(): Observable<any> {
+    return this.http.get(this.rootUrl + this.thingID + '/features', this.getBasicHeader())
       .map(DataService.extractData)
       .catch(DataService.handleError)
-      .map(response => response.properties.status.sensorValue);
+      .map(response => {
+        return {
+          humidity: response.HumiditySensor_0.properties.status.sensorValue,
+          temperature: response.TemperatureSensor_0.properties.status.sensorValue
+        };
+      });
   }
 
   private getBasicHeader(): RequestOptions{
