@@ -7,12 +7,15 @@ import { ChartsComponent } from './charts/charts.component';
 import {ChartModule} from 'angular2-chartjs';
 import {DataService} from './data.service';
 import {HttpModule} from '@angular/http';
+import { MockedChartComponent } from './mocked-chart/mocked-chart.component';
+import {MockedDataService} from './mocked-data.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChartsComponent
+    ChartsComponent,
+    MockedChartComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,7 @@ import {HttpModule} from '@angular/http';
     ChartModule,
     HttpModule
   ],
-  providers: [DataService],
+  providers: [DataService, MockedDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
