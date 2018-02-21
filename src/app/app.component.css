@@ -1,0 +1,27 @@
+nav {
+  display: none;
+  position: fixed;
+  z-index: 2;
+}
+
+nav i {
+  height: auto !important;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+}
+
+#mobile-nav-links {
+  display: inline-block;
+  height: 32px;
+}
+
+footer {
+  display: none;
+}
