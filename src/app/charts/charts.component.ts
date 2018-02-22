@@ -16,7 +16,7 @@ export class ChartsComponent implements OnInit {
 
   @ViewChild('chart') private chart: ChartComponent;
 
-  private brightnessThreshold: number = 150000;
+  private brightnessThreshold: number = 700000;
 
   private trigger: boolean = true;
   public chartData: any;
@@ -136,11 +136,13 @@ export class ChartsComponent implements OnInit {
   }
 
   private updateCount(brightness: number) {
-    if (this.trigger && brightness <= this.brightnessThreshold) {
+    if (brightness > this.brightnessThreshold) {
+      this.trigger = true;
+      return;
+    }
+    if (this.trigger) {
       this.dataService.incrementCount();
       this.trigger = false;
-    } else {
-      this.trigger = true;
     }
   }
 }

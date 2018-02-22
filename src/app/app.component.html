@@ -24,11 +24,21 @@
         </div>
         <div class="row">
           <div class="col s12 white-text" style="height: 300px;">
-            <img src="../assets/wetter.png" style="width: 117%; margin-left: -7%"/>
+            <img src="../assets/images/weather.png" style="width: 117%; margin-left: -7%"/>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 100px;">
+          <div class="col s12 center">
+            <iframe src="http://100.104.2.215:8081/" style="width: 352px; height: 288px; overflow: hidden; border: none;"></iframe>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12" style="font-size: 1.2rem;">
+            Detected amount of mites: <span style="font-weight: bold;">332</span>  <i class="material-icons" style="font-size: 1.2rem;">refresh</i>
           </div>
         </div>
       </div>
-      <div class="col s8 offset-s1 center">
+      <div class="col s8 offset-s1">
         <div class="row">
           <div class="col s12 center">
             <app-charts></app-charts>
@@ -37,6 +47,15 @@
         <div class="row" style="margin-top: 50px;">
           <div class="col s12 center">
             <app-mocked-chart></app-mocked-chart>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 50px;">
+          <div class="col s12">
+            <ul class="collection with-header" style="font-size: 1.2rem;">
+              <li class="collection-header"><h2>Notifications</h2></li>
+              <li class="collection-item"><span style="color: #f7ca18; font-weight: bold;">[WARNING]</span> Disease suspected <a href="https://en.wikipedia.org/wiki/American_foulbrood">foul brood</a> (Reason: anomalie in body form).</li>
+              <li class="collection-item"><span style="color: #26a65b; font-weight: bold;">[INFO]</span> Humidity in the hive is above average. (Actual: 60%, Normal: 45%)</li>
+            </ul>
           </div>
         </div>
       </div>
