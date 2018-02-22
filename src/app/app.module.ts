@@ -8,7 +8,6 @@ import {ChartModule} from 'angular2-chartjs';
 import {DataService} from './data.service';
 import {HttpModule} from '@angular/http';
 import { MockedChartComponent } from './mocked-chart/mocked-chart.component';
-import {MockedDataService} from './mocked-data.service';
 
 
 @NgModule({
@@ -23,7 +22,7 @@ import {MockedDataService} from './mocked-data.service';
     ChartModule,
     HttpModule
   ],
-  providers: [DataService, MockedDataService],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
