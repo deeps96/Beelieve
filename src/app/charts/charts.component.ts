@@ -76,7 +76,7 @@ export class ChartsComponent implements OnInit {
         labels: [],
         datasets: [
           {
-            label: 'Humidity',
+            label: 'Humidity, %',
             data: [],
             borderColor: 'rgba(238, 110, 133, 1)',
             backgroundColor: 'rgba(238, 110, 133, 1)',
@@ -84,7 +84,7 @@ export class ChartsComponent implements OnInit {
             yAxisID: "y-axis-1",
           },
           {
-            label: 'Temperature',
+            label: 'Temperature, °C',
             data: [],
             borderColor: 'rgba(83, 162, 229, 1)',
             backgroundColor: 'rgba(83, 162, 229, 1)',
@@ -107,7 +107,7 @@ export class ChartsComponent implements OnInit {
             id: "y-axis-1",
             scaleLabel: {
               display: true,
-              labelString: 'Humidity',
+              labelString: 'Humidity, %',
               fontSize: 12,
             },
             type: "linear",
@@ -120,7 +120,7 @@ export class ChartsComponent implements OnInit {
             id: "y-axis-2",
             scaleLabel: {
               display: true,
-              labelString: 'Temperature',
+              labelString: 'Temperature, °C',
               fontSize: 12,
             },
             type: "linear",

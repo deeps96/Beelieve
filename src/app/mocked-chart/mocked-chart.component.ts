@@ -69,7 +69,7 @@ export class MockedChartComponent implements OnInit {
         labels: [],
         datasets: [
           {
-            label: 'Weight',
+            label: 'Weight, kg',
             data: [],
             borderColor: 'rgba(255, 0, 0, 0.3)',
             backgroundColor: 'rgba(0, 0, 0, 0.0)',
