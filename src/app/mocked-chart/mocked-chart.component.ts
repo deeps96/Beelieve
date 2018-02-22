@@ -3,8 +3,6 @@ import {DataService} from '../data.service';
 import {Subscription} from 'rxjs/Subscription';
 import {Observable} from 'rxjs/Observable';
 import {ChartComponent} from 'angular2-chartjs';
-import {Mock} from 'protractor/built/driverProviders';
-import {MockedDataService} from '../mocked-data.service';
 
 @Component({
   selector: 'app-mocked-chart',
@@ -19,7 +17,7 @@ export class MockedChartComponent implements OnInit {
   private timer: any;
   private updateSubscription: Subscription;
 
-  constructor(private mockedDataService: MockedDataService) {
+  constructor(private dataService: DataService) {
     this.timer = Observable.timer(0, 500);
     this.initChartData();
   }
@@ -41,10 +39,10 @@ export class MockedChartComponent implements OnInit {
 
   private addUpdateListener() {
     this.updateSubscription = this.timer.subscribe(time =>
-      this.mockedDataService.getMockData().subscribe(response => {
-        this.addWeightData({
+      this.dataService.getCountAndWeight().subscribe(response => {
+        this.addData({
           label: MockedChartComponent.getPrettyTime(new Date()),
-          data: response.weight
+          data: response
         });
       })
     );
@@ -56,9 +54,11 @@ export class MockedChartComponent implements OnInit {
       ("0" + time.getSeconds()).slice(-2);
   }
 
-  private addWeightData(data: any): void {
+  private addData(data: any): void {
     this.chart.chart.data.labels.push(data.label);
-    this.chart.chart.data.datasets[0].data.push(data.weight);
+    this.chart.chart.data.datasets[0].data.push(data.data.weight);
+    this.chart.chart.data.datasets[1].data.push(data.data.count);
+    console.log(this.chart.chart.data.datasets[0]);
     this.chart.chart.update();
   }
 
@@ -95,14 +95,10 @@ export class MockedChartComponent implements OnInit {
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero: true,
-              min: 0,
-              max: 100
+              min: 35
             }
           },{
             ticks: {
-              beginAtZero: true,
-              min: 0
             }
           }]
         }
