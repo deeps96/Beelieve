@@ -71,15 +71,17 @@ export class MockedChartComponent implements OnInit {
           {
             label: 'Weight, kg',
             data: [],
-            borderColor: 'rgba(255, 0, 0, 0.3)',
-            backgroundColor: 'rgba(0, 0, 0, 0.0)',
+            borderColor: 'rgba(238, 110, 133, 1)',
+            backgroundColor: 'rgba(238, 110, 133, 1)',
+            fill: false,
             yAxisID: "y-axis-1"
           },
           {
             label: 'Count',
             data: [],
-            borderColor: 'rgba(0, 255, 0, 0.3)',
-            backgroundColor: 'rgba(0, 0, 0, 0.0)',
+            borderColor: 'rgba(83, 162, 229, 1)',
+            backgroundColor: 'rgba(83, 162, 229, 1)',
+            fill: false,
             yAxisID: "y-axis-2"
           }
         ]
@@ -96,11 +98,26 @@ export class MockedChartComponent implements OnInit {
         scales: {
           yAxes: [{
             id: "y-axis-1",
+            scaleLabel: {
+              display: true,
+              labelString: 'Weight',
+              fontSize: 12,
+            },
+            type: "linear",
+            position: "left",
             ticks: {
-              min: 35
+              min: 38,
+              max: 45
             }
           },{
             id: "y-axis-2",
+            scaleLabel: {
+              display: true,
+              labelString: 'Count',
+              fontSize: 12,
+            },
+            type: "linear",
+            position: "right",
             ticks: {
               min: 0,
               max: 10
