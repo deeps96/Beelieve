@@ -16,7 +16,7 @@ export class ChartsComponent implements OnInit {
 
   @ViewChild('chart') private chart: ChartComponent;
 
-  private brightnessThreshold: number = 700000;
+  private brightnessThreshold: number = 250000;
 
   private trigger: boolean = true;
   public chartData: any;
