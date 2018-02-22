@@ -39,7 +39,7 @@ export class MockedChartComponent implements OnInit {
 
   private addUpdateListener() {
     this.updateSubscription = this.timer.subscribe(time =>
-      this.dataService.getCountAndWeight().subscribe(response => {
+      this.dataService.getCountAndWeightAndVolume().subscribe(response => {
         this.addData({
           label: MockedChartComponent.getPrettyTime(new Date()),
           data: response
@@ -58,6 +58,7 @@ export class MockedChartComponent implements OnInit {
     this.chart.chart.data.labels.push(data.label);
     this.chart.chart.data.datasets[0].data.push(data.data.weight);
     this.chart.chart.data.datasets[1].data.push(data.data.count);
+    this.chart.chart.data.datasets[2].data.push(data.data.volume);
     this.chart.chart.update();
   }
 
@@ -83,6 +84,14 @@ export class MockedChartComponent implements OnInit {
             backgroundColor: 'rgba(230, 126, 34, 1)',
             fill: false,
             yAxisID: "y-axis-2"
+          },
+          {
+            label: 'Volume, dB',
+            data: [],
+            borderColor: 'rgba(52, 73, 94, 1)',
+            backgroundColor: 'rgba(52, 73, 94, 1)',
+            fill: false,
+            yAxisID: "y-axis-3"
           }
         ]
       },
@@ -106,8 +115,8 @@ export class MockedChartComponent implements OnInit {
             type: "linear",
             position: "left",
             ticks: {
-              min: 38,
-              max: 45
+              min: 39,
+              max: 40.5
             }
           },{
             id: "y-axis-2",
@@ -120,6 +129,19 @@ export class MockedChartComponent implements OnInit {
             position: "right",
             ticks: {
               min: 0,
+            }
+          },{
+            id: "y-axis-3",
+            scaleLabel: {
+              display: true,
+              labelString: 'Volume, dB',
+              fontSize: 12,
+            },
+            type: "linear",
+            position: "left",
+            ticks: {
+              min: 35,
+              max: 80
             }
           }]
         }

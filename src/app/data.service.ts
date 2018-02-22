@@ -34,27 +34,22 @@ export class DataService {
     this.currentCount++;
   }
 
-  public getCountAndWeight(): Observable<any> {
+  public getCountAndWeightAndVolume(): Observable<any> {
     if (this.index == 100) {
       this.index = 0;
     } else {
-      this.index += 4;
+      this.index += 2;
     }
     return Observable.of({
       weight: this.calculateWeightForIndex(),
-      count: this.currentCount
+      count: this.currentCount,
+      volume: this.calculateVolumeForIndex()
     })
   }
 
   private calculateWeightForIndex(): number {
     this.currentWeight -= (this.index < 33) ? 0.006 : -0.002;
     return this.currentWeight;
-  }
-
-  public getMockedVolume(): Observable<any> {
-    return Observable.of({
-      volume: this.calculateVolumeForIndex()
-    });
   }
 
   public getDataFromXDK(): Observable<any> {
