@@ -38,7 +38,7 @@ export class DataService {
     if (this.index == 100) {
       this.index = 0;
     } else {
-      this.index++;
+      this.index += 4;
     }
     return Observable.of({
       weight: this.calculateWeightForIndex(),
@@ -64,7 +64,8 @@ export class DataService {
       .map(response => {
         return {
           humidity: response.HumiditySensor_0.properties.status.sensorValue,
-          temperature: response.TemperatureSensor_0.properties.status.sensorValue
+          temperature: response.TemperatureSensor_0.properties.status.sensorValue,
+          brightness: response.IlluminanceSensor_0.properties.status.sensorValue
         };
       });
   }

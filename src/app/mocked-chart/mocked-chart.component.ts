@@ -18,7 +18,7 @@ export class MockedChartComponent implements OnInit {
   private updateSubscription: Subscription;
 
   constructor(private dataService: DataService) {
-    this.timer = Observable.timer(0, 500);
+    this.timer = Observable.timer(0, 2000);
     this.initChartData();
   }
 
@@ -58,7 +58,6 @@ export class MockedChartComponent implements OnInit {
     this.chart.chart.data.labels.push(data.label);
     this.chart.chart.data.datasets[0].data.push(data.data.weight);
     this.chart.chart.data.datasets[1].data.push(data.data.count);
-    console.log(this.chart.chart.data.datasets[0]);
     this.chart.chart.update();
   }
 
@@ -73,13 +72,15 @@ export class MockedChartComponent implements OnInit {
             label: 'Weight',
             data: [],
             borderColor: 'rgba(255, 0, 0, 0.3)',
-            backgroundColor: 'rgba(0, 0, 0, 0.0)'
+            backgroundColor: 'rgba(0, 0, 0, 0.0)',
+            yAxisID: "y-axis-1"
           },
           {
             label: 'Count',
             data: [],
             borderColor: 'rgba(0, 255, 0, 0.3)',
-            backgroundColor: 'rgba(0, 0, 0, 0.0)'
+            backgroundColor: 'rgba(0, 0, 0, 0.0)',
+            yAxisID: "y-axis-2"
           }
         ]
       },
@@ -94,11 +95,15 @@ export class MockedChartComponent implements OnInit {
         },
         scales: {
           yAxes: [{
+            id: "y-axis-1",
             ticks: {
               min: 35
             }
           },{
+            id: "y-axis-2",
             ticks: {
+              min: 0,
+              max: 10
             }
           }]
         }
