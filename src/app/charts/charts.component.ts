@@ -21,7 +21,7 @@ export class ChartsComponent implements OnInit {
   private updateSubscription: Subscription;
 
   constructor(private dataService: DataService) {
-    this.timer = Observable.timer(0, 500);
+    this.timer = Observable.timer(0, 2000);
     this.initChartData();
   }
 
@@ -74,14 +74,18 @@ export class ChartsComponent implements OnInit {
           {
             label: 'Humidity',
             data: [],
-            borderColor: 'rgba(255, 0, 0, 0.3)',
-            backgroundColor: 'rgba(0, 0, 0, 0.0)'
+            borderColor: 'rgba(238, 110, 133, 1)',
+            backgroundColor: 'rgba(238, 110, 133, 1)',
+            fill: false,
+            yAxisID: "y-axis-1",
           },
           {
             label: 'Temperature',
             data: [],
-            borderColor: 'rgba(0, 255, 0, 0.3)',
-            backgroundColor: 'rgba(0, 0, 0, 0.0)'
+            borderColor: 'rgba(83, 162, 229, 1)',
+            backgroundColor: 'rgba(83, 162, 229, 1)',
+            fill: false,
+            yAxisID: "y-axis-2",
           }
         ]
       },
@@ -96,16 +100,30 @@ export class ChartsComponent implements OnInit {
         },
         scales: {
           yAxes: [{
+            id: "y-axis-1",
+            scaleLabel: {
+              display: true,
+              labelString: 'Humidity',
+              fontSize: 12,
+            },
+            type: "linear",
+            position: "left",
             ticks: {
-              beginAtZero: true,
               min: 0,
-              max: 100
+              max: 100,
             }
           },{
+            id: "y-axis-2",
+            scaleLabel: {
+              display: true,
+              labelString: 'Temperature',
+              fontSize: 12,
+            },
+            type: "linear",
+            position: "right",
             ticks: {
-              beginAtZero: true,
               min: -20,
-              max: 100
+              max: 60,
             }
           }]
         }
