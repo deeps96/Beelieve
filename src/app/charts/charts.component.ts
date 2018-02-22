@@ -16,6 +16,9 @@ export class ChartsComponent implements OnInit {
 
   @ViewChild('chart') private chart: ChartComponent;
 
+  private brightnessThreshold: number = 150000;
+
+  private trigger: boolean = true;
   public chartData: any;
   private timer: any;
   private updateSubscription: Subscription;
@@ -47,6 +50,7 @@ export class ChartsComponent implements OnInit {
           label: ChartsComponent.getPrettyTime(new Date()),
           data: response
         });
+        this.updateCount(response.brightness);
       })
     );
   }
@@ -131,4 +135,12 @@ export class ChartsComponent implements OnInit {
     }
   }
 
+  private updateCount(brightness: number) {
+    if (this.trigger && brightness <= this.brightnessThreshold) {
+      this.dataService.incrementCount();
+      this.trigger = false;
+    } else {
+      this.trigger = true;
+    }
+  }
 }
